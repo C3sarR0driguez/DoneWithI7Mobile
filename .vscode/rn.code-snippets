@@ -1,0 +1,39 @@
+{
+  "Function Component": {
+    "prefix": "rnfc",
+    "body": [
+      "import React from 'react';",
+      "import { Flex } from 'components';",
+      "import styles from './styles';",
+      "",
+      "function ${TM_FILENAME_BASE}(props) {",
+      "  return (",
+      "    <Flex style={styles.root}>$0</Flex>",
+      "  );",
+      "}",
+      "",
+      "${TM_FILENAME_BASE}.displayName = ${TM_FILENAME_BASE}.name;",
+      "${TM_FILENAME_BASE}.propTypes = {};",
+      "${TM_FILENAME_BASE}.defaultProps = {};",
+      "export default ${TM_FILENAME_BASE};",
+      ""
+    ]
+  },
+  "Styles": {
+    "prefix": "rns",
+    "body": [
+      "import { StyleSheet } from 'react-native';",
+      "",
+      "const baseStyles = {",
+      "  root: {",
+      "    flex: 1",
+      "  }",
+      "}",
+      "",
+      "const styles = StyleSheet.create(baseStyles);",
+      "export { baseStyles };",
+      "export default styles;",
+      ""
+    ]
+  }
+}

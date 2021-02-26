@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Red jacket for sale",
+        "price": 100,
+        "image": "https://images.unsplash.com/photo-1575383388097-f48fe3b21ab3?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"
+    },
+    {
+        "id": 2,
+        "title": "Phone great conditions",
+        "price": 1000,
+        "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
+    },
+    {
+        "id": 3,
+        "title": "Couch great conditions",
+        "price": 400,
+        "image": "https://images.unsplash.com/photo-1596900779744-2bdc4a90509a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1700&q=80"
+    },
+    {
+        "id": 4,
+        "title": "Spiderman Costume",
+        "price": 199,
+        "image": "https://images.unsplash.com/photo-1611567798785-dc07e90a6b7a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80"
+    }
+]
