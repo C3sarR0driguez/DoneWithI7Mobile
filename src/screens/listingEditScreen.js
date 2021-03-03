@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useState } from "react";
 import * as Yup from "yup";
 import Form from "components/formComponent";
 import FormField from "components/formFieldComponent";
@@ -8,7 +7,12 @@ import FormImagePicker from "components/formImagePickerComponent";
 import SubmitButton from "components/submitButtonComponent";
 import CategoryPickerItem from "../components/categoryPickerItemComponent";
 import Screen from "components/screenComponent";
+import listingsApi from "api/listings";
+import useLocation from "hooks/useLocation";
+import UploadProgress from "components/uploadProgressComponent";
+import { Alert } from "react-native";
 
+import styles from "./listingEditStyles";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label("Title"),
@@ -76,9 +80,44 @@ const categories = [
 ];
 
 function ListingEditScreen() {
+    const location = useLocation();
+    const [submitting, setSubmitting] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
+
+    async function handelSubmit(listing, { resetForm }) {
+        setSubmitting(true);
+        setUploadProgress(0);
+        const response = await listingsApi.postListing(
+            {
+                ...listing,
+                location,
+            },
+            handleUploadProgress
+        );
+        if (!response.ok) {
+            setSubmitting(false);
+            Alert.alert("Could not save the listing");
+            return;
+        }
+        resetForm();
+    }
+
+    function handleUploadFinish() {
+        setSubmitting(false);
+    }
+
+    function handleUploadProgress(progressEvent) {
+        const percentCompleted = progressEvent.loaded / progressEvent.total;
+        setUploadProgress(percentCompleted);
+    }
 
     return (
-        <Screen style={styles.container}>
+        <Screen style={styles.root}>
+            <UploadProgress
+                visible={submitting}
+                progress={uploadProgress}
+                onUploadFinish={handleUploadFinish}
+            />
             <Form
                 initialValues={{
                     title: "",
@@ -87,7 +126,7 @@ function ListingEditScreen() {
                     category: null,
                     images: [],
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={handelSubmit}
                 validationSchema={validationSchema}
             >
                 <FormImagePicker name="images" />
@@ -120,9 +159,4 @@ function ListingEditScreen() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-    },
-});
 export default ListingEditScreen;

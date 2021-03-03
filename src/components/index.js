@@ -14,3 +14,4 @@ export { default as Icon } from "./iconComponent";
 export { default as Text } from "./textComponent";
 export { default as NewListingButton } from "./newListingButtonComponent";
 export { default as ListItemDeleteAction } from "./listItemDeleteActionComponent";
+export { default as ActivityIndicator } from "./activityIndicatorComponent";

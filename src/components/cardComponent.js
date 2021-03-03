@@ -5,11 +5,11 @@ import COLORS from "ui/colors";
 
 import styles from "./cardStyles";
 
-function Card({ title, subTitle, image, onPress }) {
+function Card({ title, subTitle, imageUrl, onPress }) {
     return (
         <TouchableWithoutFeedback onPress={onPress}>
             <View style={styles.root}>
-                <Image style={styles.image} source={{ uri: image }} />
+                <Image style={styles.image} source={{ uri: imageUrl }} />
                 <View style={styles.detailsContainer}>
                     <Text style={styles.title} h4 bold>
                         {title}

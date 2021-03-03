@@ -10,6 +10,7 @@ function FormField({ name, width = "100%", ...rest }) {
         handleChange,
         errors,
         touched,
+        values
     } = useFormikContext();
 
     return (
@@ -18,6 +19,7 @@ function FormField({ name, width = "100%", ...rest }) {
                 onBlur={() => setFieldTouched(name)}
                 onChangeText={handleChange(name)}
                 width={width}
+                value={values[name]}
                 {...rest}
             />
             <ErrorMessage error={errors[name]} visible={touched[name]} />
