@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View } from "react-native";
 import { Text, ListItem } from "components";
+import { Image } from "react-native-expo-image-cache";
 
 import styles from "./listingDetailsStyles";
 import COLORS from "ui/colors";
@@ -12,10 +13,18 @@ function ListingDetailsScreen({ route }) {
 
     return (
         <View>
-            <Image style={styles.image} source={{ uri: listing.image }}  resizeMode="cover" />
+            <Image
+                style={styles.image}
+                uri={listing.images[0].url}
+                tint="light"
+                preview={{ uri: listing.images[0].thumbnailUrl }}
+                resizeMode="cover"
+            />
             <View style={styles.root}>
                 <Text h3>{listing.title}</Text>
-                <Text color={COLORS.SECONDARY} h4>${listing.price}</Text>
+                <Text color={COLORS.SECONDARY} h4>
+                    ${listing.price}
+                </Text>
                 <View style={styles.userContainer}>
                     <ListItem
                         image={avatar}

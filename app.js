@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import { OfflineNotification } from "components";
 import AppNavigator from "navigation/appNavigator";
 import { useFonts } from "expo-font";
 import navigationTheme from "ui/navigationTheme";
-
 import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
@@ -16,9 +16,13 @@ export default function App() {
     });
     if (loaded) {
         return (
-            <NavigationContainer theme={navigationTheme}>
-                <AppNavigator />
-            </NavigationContainer>
+            <>
+                <StatusBar />
+                <OfflineNotification />
+                <NavigationContainer theme={navigationTheme}>
+                    <AppNavigator />
+                </NavigationContainer>
+            </>
         );
     }
     return null;
