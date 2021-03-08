@@ -1,4 +1,10 @@
 import { registerRootComponent } from "expo";
+import React from "react";
 import App from "./app";
+import AuthProvider from "contexts/auth";
 
-registerRootComponent(App);
+registerRootComponent(() =>
+    <AuthProvider>
+        <App />
+    </AuthProvider>
+);

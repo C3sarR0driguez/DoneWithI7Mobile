@@ -1,5 +1,8 @@
 import React from "react";
+import { View } from "react-native";
 import LottieView from "lottie-react-native";
+
+import styles from "./activityIndicatorStyles";
 
 const loader = require("assets/animations/loader.json");
 
@@ -8,7 +11,7 @@ function ActivityIndicator(props) {
     if (!visible) {
         return null;
     }
-    return <LottieView autoPlay loop source={loader} />;
+    return <View style={styles.root}><LottieView autoPlay loop source={loader} /></View>;
 }
 
 ActivityIndicator.displayName = ActivityIndicator.name;

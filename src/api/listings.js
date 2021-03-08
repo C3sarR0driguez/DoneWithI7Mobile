@@ -1,9 +1,8 @@
 import client from "./client";
-
-const ENDPOINT = "/listings";
+import ENDPOINTS from "globals/endpoints";
 
 function getListings() {
-    return client.get(ENDPOINT);
+    return client.get(ENDPOINTS.LISTINGS);
 }
 
 function postListing(listing, onUploadProgress) {
@@ -24,7 +23,7 @@ function postListing(listing, onUploadProgress) {
     }
     const config = { onUploadProgress };
 
-    return client.post(ENDPOINT, formData, config);
+    return client.post(ENDPOINTS.LISTINGS, formData, config);
 }
 
 export default { getListings, postListing };

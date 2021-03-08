@@ -1,8 +1,20 @@
 import { create } from "apisauce";
+import STORAGE_KEYS from "globals/storage";
 import cache from "utils/cache";
+import storage from "utils/storage";
 
 const apiClient = create({
-    baseURL: "https://614d81975abf.ngrok.io/api",
+    baseURL: "https://fc16e679c406.ngrok.io/api",
+});
+
+apiClient.addAsyncRequestTransform(async (req) => {
+    const result = await storage.retrieveSecure(STORAGE_KEYS.AUTH);
+    if (!result.ok) {
+        return;
+    }
+    const token = result.data;
+    req.headers["x-auth-token"] = token;
+
 });
 
 function asForm(json) {
@@ -38,9 +50,9 @@ apiClient.get = async function (...args) {
     }
     return result.data
         ? {
-            ok: true,
-            data: result.data,
-        }
+              ok: true,
+              data: result.data,
+          }
         : response;
 };
 

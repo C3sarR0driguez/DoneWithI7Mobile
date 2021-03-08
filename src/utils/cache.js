@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import moment from "moment";
 
-const PREFIX = "dwi7/cache/";
+const PREFIX = "dwi7-cache-";
 const EXPIRY_IN_MINUTES = 5;
 
 function expired({ updatedAt }) {
